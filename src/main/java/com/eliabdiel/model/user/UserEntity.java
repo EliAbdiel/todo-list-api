@@ -1,13 +1,13 @@
 package com.eliabdiel.model.user;
 
 import com.eliabdiel.model.role.Role;
-import com.eliabdiel.model.task.Task;
+// import com.eliabdiel.model.task.Task;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+// import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -45,6 +45,6 @@ public class UserEntity {
     )
     private Set<Role> roles;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Task> tasks;
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Task> tasks;
 }

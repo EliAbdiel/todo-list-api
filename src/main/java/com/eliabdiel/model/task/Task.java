@@ -1,7 +1,5 @@
 package com.eliabdiel.model.task;
 
-import com.eliabdiel.model.user.UserEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,14 +22,12 @@ public class Task {
 
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    @JsonIgnore
-    private UserEntity user;
+    @Column(name = "user_id")
+    private Long userId;
 
-    public Task(String title, String description, UserEntity user) {
+    public Task(String title, String description, Long userId) {
         this.title = title;
         this.description = description;
-        this.user = user;
+        this.userId = userId;
     }
 }

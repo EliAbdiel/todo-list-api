@@ -1,4 +1,4 @@
-package com.eliabdiel.repository;
+package com.eliabdiel.repository.user_role;
 
 import com.eliabdiel.model.user.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

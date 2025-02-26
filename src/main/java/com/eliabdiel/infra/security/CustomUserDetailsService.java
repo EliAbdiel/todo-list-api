@@ -1,6 +1,6 @@
 package com.eliabdiel.infra.security;
 
-import com.eliabdiel.repository.UserRepository;
+import com.eliabdiel.repository.user_role.UserRepository;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

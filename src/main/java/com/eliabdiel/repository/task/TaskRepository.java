@@ -1,4 +1,4 @@
-package com.eliabdiel.repository;
+package com.eliabdiel.repository.task;
 
 import com.eliabdiel.model.task.Task;
 import org.springframework.data.domain.Page;
@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
     Page<Task> findCreatedBy(Long userId, Pageable pageable);
+
+    //boolean existsByUserId(Long userId);
 }
