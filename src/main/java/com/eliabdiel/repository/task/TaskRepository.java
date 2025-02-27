@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
-    Page<Task> findCreatedBy(Long userId, Pageable pageable);
+    Page<Task> findTaskBy(Pageable pageable);
 
     //boolean existsByUserId(Long userId);
 }

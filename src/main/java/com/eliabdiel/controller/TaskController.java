@@ -4,6 +4,8 @@ import com.eliabdiel.model.dto.TaskDto;
 import com.eliabdiel.model.dto.UpdateTask;
 import com.eliabdiel.service.TaskService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,11 @@ import org.springframework.web.bind.annotation.*;
 public class TaskController {
 
     private final TaskService taskService;
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<?> getAllTasks(@PathVariable Long userId, @PageableDefault(size = 5) Pageable pageable) {
+        return taskService.getAllTasks(userId, pageable);
+    }
 
     @PostMapping("/{userId}")
     public ResponseEntity<?> addTask(@PathVariable Long userId, @RequestBody TaskDto taskDto) {
