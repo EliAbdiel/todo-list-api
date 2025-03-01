@@ -1,0 +1,17 @@
+spring.application.name=TodoList
+
+# mysql configurations
+spring.datasource.mysql.jdbcUrl=jdbc:mysql://localhost:3306/your_database
+spring.datasource.mysql.username=your_username
+spring.datasource.mysql.password=your_password
+spring.datasource.mysql.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# postgres configurations
+spring.datasource.postgres.jdbcUrl=jdbc:postgresql://localhost:5432/your_database
+spring.datasource.postgres.username=your_username
+spring.datasource.postgres.password=your_password
+spring.datasource.postgres.driver-class-name=org.postgresql.Driver
+
+server.port=8081
+#spring.threads.virtual.enable=true
+#debug=true
