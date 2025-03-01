@@ -3,6 +3,7 @@ package com.eliabdiel.service;
 import com.eliabdiel.infra.exception.ApiException;
 import com.eliabdiel.infra.security.JwtTokenProvider;
 import com.eliabdiel.infra.util.UserRole;
+import com.eliabdiel.model.dto.JwtAuthResponse;
 import com.eliabdiel.model.dto.LoginDto;
 import com.eliabdiel.model.dto.RegisterDto;
 import com.eliabdiel.model.role.Role;
@@ -42,12 +43,7 @@ public class UserService {
                 throw new ApiException(HttpStatus.INTERNAL_SERVER_ERROR, "Email already exists");
             }
 
-            var user = new UserEntity();
-
-            user.setName(registerDto.name());
-            user.setUsername(registerDto.username());
-            user.setEmail(registerDto.email());
-            user.setPassword(passwordEncoder.encode(registerDto.password()));
+            var user = new UserEntity(registerDto);
 
             Set<Role> roles = new HashSet<>();
 
@@ -73,7 +69,10 @@ public class UserService {
 
             String token = jwtTokenProvider.generateToken(authentication);
 
-            return ResponseEntity.ok(token);
+            JwtAuthResponse authResponse = new JwtAuthResponse();
+            authResponse.setAccessToken(token);
+
+            return ResponseEntity.ok(authResponse);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("error: " + e.getMessage());
         }

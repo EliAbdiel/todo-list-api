@@ -1,5 +1,6 @@
 package com.eliabdiel.model.task;
 
+import com.eliabdiel.model.dto.TaskDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,9 +26,9 @@ public class Task {
     @Column(name = "user_id")
     private Long userId;
 
-    public Task(String title, String description, Long userId) {
-        this.title = title;
-        this.description = description;
+    public Task(TaskDto taskDto, Long userId) {
+        this.title = taskDto.title();
+        this.description = taskDto.description();
         this.userId = userId;
     }
 }

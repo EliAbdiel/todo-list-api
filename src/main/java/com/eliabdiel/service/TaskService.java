@@ -37,9 +37,9 @@ public class TaskService {
             var user = userRepository.findById(userId).orElseThrow(
                     () -> new ApiException(HttpStatus.INTERNAL_SERVER_ERROR, "User ID not found")
             );
-            var newTask = new Task(taskDto.title(), taskDto.description(), user.getId());
-            var saved = taskRepository.save(newTask);
-            return ResponseEntity.ok(new TaskDetails(saved));
+            var task = new Task(taskDto, user.getId());
+            taskRepository.save(task);
+            return ResponseEntity.ok(new TaskDetails(task));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("error: " + e.getMessage());
         }
